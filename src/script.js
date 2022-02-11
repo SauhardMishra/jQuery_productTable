@@ -80,6 +80,22 @@ $("#product_list").on("click",".delProduct",function(){     //Remove table row f
 });                                                      //End of remove table row function
 
 
+$("#product_list").on("click",".editProduct",function(){
+    var edt = $(this).data("id");
+    for(var i=0;i<products.length;i++){
+        if (products[i].id==edt) {
+             console.log(edt);   
+            $("#product_id").val(products[i].id);
+            $("#product_name").val(products[i].name);
+            $("#product_price").val(products[i].price);
+            $("#product_quantity").val(products[i].quantity);
+        }
+
+    }
+    displayList();
+});
+
+
 
 
 
@@ -104,7 +120,7 @@ function displayList(){                                   //Display List functio
           <td>"+products[i].price+"</td>\
           <td>"+products[i].quantity+"</td>\
           <td><a href='#' class='delProduct'data-id='"+products[i].id+"'>Delete</a></td>\
-          <td><a href='#'>Edit</a></td>\
+          <td><a href='#' class='editProduct'data-id='"+products[i].id+"'>Edit</a></td>\
           </tr>";
       }    
       
